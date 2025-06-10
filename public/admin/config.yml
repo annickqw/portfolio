@@ -2,9 +2,6 @@ backend:
   name: github
   repo: annickqw/portfolio
   branch: main
-  auth_scope: repo
-  base_url: https://api.netlify.com
-  auth_endpoint: /auth
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
@@ -19,4 +16,4 @@ collections:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Omschrijving", name: "description", widget: "text" }
       - { label: "Afbeelding", name: "image", widget: "image" }
-      - { label: "Tekst", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown" }
