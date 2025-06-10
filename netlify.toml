@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/auth"
+  to = "https://github.com/login/oauth/authorize"
+  status = 200
