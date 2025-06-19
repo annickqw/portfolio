@@ -3,8 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>Decap CMS</title>
-    <script src="https://unpkg.com/netlify-cms@2.10.1/dist/netlify-cms.js"></script>  </head>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="https://unpkg.com/netlify-cms@2.10.1/dist/netlify-cms.js"></script>
+  </head>
   <body>
     <div id="nc-root"></div>
+    <script>
+      CMS.init();
+    </script>
   </body>
 </html>
