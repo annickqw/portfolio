@@ -4,13 +4,7 @@ import { getCollection } from "astro:content";
 const projects = await getCollection("projects");
 ---
 
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Wi/Wi Studio</title>
-</head>
-
+<!-- De rest van je HTML -->
 <h1>Wi/Wi Studio</h1>
 
 <h2>Projecten</h2>
@@ -30,19 +24,14 @@ const projects = await getCollection("projects");
 	}
 </ul>
 
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
-></script>
-<script is:inline>
-	document.addEventListener("DOMContentLoaded", function () {
-		if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", (user) => {
-				if (!user) {
-					window.netlifyIdentity.on("login", () => {
-						document.location.href = "/admin/";
-					});
-				}
-			});
-			window.netlifyIdentity.init();
-		}
+<!-- Voeg de widget toe met veilig JavaScript -->
+<script type="module" is:inline>
+	import netlifyIdentity from "https://cdn.jsdelivr.net/npm/netlify-identity-widget@1.9.2/+esm";
+
+	document.addEventListener("DOMContentLoaded", () => {
+		netlifyIdentity.init();
+		netlifyIdentity.on("login", () => {
+			document.location.href = "/admin/";
+		});
 	});
 </script>
