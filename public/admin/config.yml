@@ -1,11 +1,6 @@
 backend:
-  name: github
-  repo: annickqw/portfolio
+  name: git-gateway
   branch: main
-  auth_scope: repo
-  base_url: https://wi-wi.netlify.app
-  auth_endpoint: /.netlify/functions/auth
-  client_id: Ov23libDtq2tdj25kZa3
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
