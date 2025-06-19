@@ -1,3 +1,9 @@
+---
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+---
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -8,5 +14,22 @@
 	</head>
 	<body>
 		<h1>Wi/Wi Studio</h1>
+
+		<h2>Projecten</h2>
+		<ul>
+			{
+				projects.map((project) => (
+					<li>
+						<h3>{project.data.title}</h3>
+						<p>{project.data.description}</p>
+						<img
+							src={project.data.image}
+							alt={project.data.title}
+							width="300"
+						/>
+					</li>
+				))
+			}
+		</ul>
 	</body>
 </html>
