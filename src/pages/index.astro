@@ -4,32 +4,43 @@ import { getCollection } from "astro:content";
 const projects = await getCollection("projects");
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Wi/Wi Studio</title>
-	</head>
-	<body>
-		<h1>Wi/Wi Studio</h1>
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Wi/Wi Studio</title>
+</head>
 
-		<h2>Projecten</h2>
-		<ul>
-			{
-				projects.map((project) => (
-					<li>
-						<h3>{project.data.title}</h3>
-						<p>{project.data.description}</p>
-						<img
-							src={project.data.image}
-							alt={project.data.title}
-							width="300"
-						/>
-					</li>
-				))
+<h1>Wi/Wi Studio</h1>
+
+<h2>Projecten</h2>
+<ul>
+	{
+		projects.map((project) => (
+			<li>
+				<h3>{project.data.title}</h3>
+				<p>{project.data.description}</p>
+				<img
+					src={project.data.image}
+					alt={project.data.title}
+					width="300"
+				/>
+			</li>
+		))
+	}
+</ul>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+></script>
+<script>
+	if (window.netlifyIdentity) {
+		window.netlifyIdentity.on("init", (user) => {
+			if (!user) {
+				window.netlifyIdentity.on("login", () => {
+					document.location.href = "/admin/";
+				});
 			}
-		</ul>
-	</body>
-</html>
+		});
+		window.netlifyIdentity.init();
+	}
+</script>
