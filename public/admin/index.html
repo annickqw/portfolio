@@ -3,15 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <title>Decap CMS</title>
-    <script>
-      window.CMS_MANUAL_INIT = true;
-    </script>
-    <script src="https://unpkg.com/netlify-cms@2.10.1/dist/netlify-cms.js"></script>
+
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- Netlify CMS -->
+    <script src="https://unpkg.com/netlify-cms@^2.10.0/dist/netlify-cms.js"></script>
   </head>
   <body>
     <div id="nc-root"></div>
+
+    <!-- Script om Netlify Identity automatisch te initialiseren -->
     <script>
-      CMS.init();
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+        window.netlifyIdentity.init();
+      }
     </script>
   </body>
 </html>
