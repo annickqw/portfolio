@@ -35,8 +35,12 @@ h3 {
 
 /* Projectenlijst */
 ul {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 200px;
+  gap: 2rem;
   list-style: none;
-  padding-left: 0;
+  padding: 0;
 }
 
 li {

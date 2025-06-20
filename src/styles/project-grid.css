@@ -1,0 +1,75 @@
+/* Stijl voor de speelse kris-kras project-layout */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+  padding: 4rem;
+  position: relative;
+}
+
+.project-card {
+   width: 200px;
+  height: auto;
+  padding: 1.5rem;
+  box-shadow: 4px 4px 70px rgb(28, 13, 197);
+  transition: transform 0.3s ease;
+  
+}
+
+.project-card img {
+  width: 200px; /* of wat je maar wilt */
+  height: auto; /* of wat je maar wilt */
+  border-radius: 8px;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Speelse plaatsingen per projectkaart */
+.card-1 {
+  grid-column: 1 / span 5;
+  grid-row: 1 / span 1;
+}
+
+.card-2 {
+  grid-column: 6 / span 5;
+  grid-row: 1 / span 1;
+  margin-top: 4rem;
+}
+
+.card-3 {
+  grid-column: 3 / span 5;
+  grid-row: 3 / span 2;
+}
+
+.card-4 {
+  grid-column: 9 / span 5;
+  grid-row: 2 / span 2;
+}
+
+.card-5 {
+  grid-column: 2 / span 5;
+  grid-row: 5 / span 2;
+  margin-top: 3rem;
+}
+
+.card-6 {
+  grid-column: 7 / span 5;
+  grid-row: 6 / span 1;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+
+  .project-card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    margin-top: 2rem;
+  }
+}

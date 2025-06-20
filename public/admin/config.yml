@@ -12,7 +12,9 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Omschrijving", name: "description", widget: "text" }
-      - { label: "Afbeelding", name: "image", widget: "image" }
-      - { label: "Body", name: "body", widget: "markdown" }
+  - { label: "Titel", name: "title", widget: "string" }
+  - { label: "Omschrijving", name: "description", widget: "text" }
+  - { label: "Afbeelding", name: "image", widget: "image" }
+  - { label: "Body", name: "body", widget: "markdown" }
+  - { label: "Kolom", name: "col", widget: "number", required: false }
+  - { label: "Rij", name: "row", widget: "number", required: false }

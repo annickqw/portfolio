@@ -1,38 +1,57 @@
 ---
-import "../styles/global.css"; // ← jouw CSS-bestand
+import "../styles/global.css";
+import "../styles/project-grid.css";
+
 import { getCollection } from "astro:content";
 
-const projects = await getCollection("projects");
+let projects = [];
+try {
+	projects = await getCollection("projects");
+} catch (e) {
+	console.error("Error loading collection:", e);
+}
 ---
 
-<!-- De rest van je HTML -->
-<h1>WiWi</h1>
+<html lang="nl">
+	<head>
+		<meta charset="UTF-8" />
+		<title>WiWi Studio</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+	</head>
+	<body>
+		<h1>WiWi Studio</h1>
 
-<h2>Projecten</h2>
-<ul>
-	{
-		projects.map((project) => (
-			<li>
-				<h3>{project.data.title}</h3>
-				<p>{project.data.description}</p>
-				<img
-					src={project.data.image}
-					alt={project.data.title}
-					width="300"
-				/>
-			</li>
-		))
-	}
-</ul>
+		<h2>Projecten</h2>
 
-<!-- Voeg de widget toe met veilig JavaScript -->
-<script type="module" is:inline>
-	import netlifyIdentity from "https://cdn.jsdelivr.net/npm/netlify-identity-widget@1.9.2/+esm";
+		<section class="project-grid">
+			{
+				projects.map((project: any, index: number) => (
+					<article
+						class="project-card"
+						style={`grid-column: ${project.data.col}; grid-row: ${project.data.row};`}
+					>
+						<h3>{project.data.title}</h3>
+						<p>{project.data.description}</p>
+						<img
+							src={project.data.image}
+							alt={project.data.title}
+							width="300"
+						/>
+					</article>
+				))
+			}
+		</section>
 
-	document.addEventListener("DOMContentLoaded", () => {
-		netlifyIdentity.init();
-		netlifyIdentity.on("login", () => {
-			document.location.href = "/admin/";
-		});
-	});
-</script>
+		<script type="module" is:inline>
+			import netlifyIdentity from "https://cdn.jsdelivr.net/npm/netlify-identity-widget@1.9.2/+esm";
+
+			document.addEventListener("DOMContentLoaded", () => {
+				netlifyIdentity.init();
+				netlifyIdentity.on("login", () => {
+					document.location.href = "/admin/";
+				});
+			});
+		</script>
+	</body>
+</html>
