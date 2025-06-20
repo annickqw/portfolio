@@ -1,7 +1,7 @@
 ---
 title: Eerste project
 description: Korte beschrijving van je project
-image: /images/uploads/2eaa26f7-fe8a-4cc7-9b15-e53c35bb9b78.webp
+image: /images/uploads/ab67616d0000b273d1a1b8c7590666fb6867d5a3.jpg
 col: 5
 row: 3
 ---
